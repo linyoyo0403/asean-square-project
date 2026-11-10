@@ -42,9 +42,9 @@
 
 
 
-1\. \*\*(1) 此專案 Markdown 說明檔 (GitHub)\*\*：\[請在此貼上你的 GitHub 檔案連結]
+1\. \*\*(1) 此專案 Markdown 說明檔 (GitHub)\*\*：\[https://github.com/linyoyo0403/asean-square-project/blob/main/prompt-readme.md]
 
 2\. \*\*(2) InfinityFree 部署首頁\*\*：\[http://ly.infinityfree.io](http://ly.infinityfree.io)
 
-3\. \*\*(3) Vercel 部署網址\*\*：\[請在此貼上你的 Vercel 網址]
+3\. \*\*(3) Vercel 部署網址\*\*：\[https://asean-square-project-7hj7.vercel.app]
 
