@@ -1,4 +1,8 @@
-/* 基本重置與字體設定 */
+/* 基礎重置與平滑滾動 */
+html {
+    scroll-behavior: smooth;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -6,169 +10,272 @@
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "微軟正黑體", sans-serif;
-    background-color: #f4f7f6;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     color: #333;
-    line-height: 1.6;
+    line-height: 1.7;
+    background-color: #faf9f6; /* 溫暖的米白色背景 */
 }
 
-/* Grid System 版面配置 */
-.grid-container {
-    display: grid;
-    grid-template-columns: 280px 1fr;
-    grid-template-rows: auto 1fr auto;
-    grid-template-areas: 
-        "header header"
-        "sidebar main"
-        "footer footer";
-    min-height: 100vh;
+/* 頂部固定導覽列 */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+
+.nav-container {
     max-width: 1200px;
     margin: 0 auto;
-    background-color: #ffffff;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-}
-
-/* 導覽列 (Header & Navbar) */
-.header {
-    grid-area: header;
-    background-color: #2c3e50;
-    color: #ecf0f1;
-    padding: 1.5rem 2rem;
+    padding: 1rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.header h1 {
+.nav-brand {
     font-size: 1.5rem;
-    letter-spacing: 1px;
+    font-weight: 700;
+    color: #0f4c5c; /* 深青綠色 */
+    text-decoration: none;
 }
 
-.navbar ul {
+.nav-menu {
     list-style: none;
     display: flex;
     gap: 1.5rem;
 }
 
-.navbar a {
-    color: #bdc3c7;
+.nav-menu a {
     text-decoration: none;
+    color: #2b2b2b;
     font-weight: 600;
-    padding: 0.5rem;
     transition: color 0.3s;
 }
 
-.navbar a:hover, .navbar a.active {
-    color: #f1c40f;
+.nav-menu a:hover {
+    color: #f26419; /* 芒果亮橘色 */
 }
 
-/* 側邊欄 (Sidebar) */
-.sidebar {
-    grid-area: sidebar;
-    background-color: #f8f9fa;
-    padding: 2rem;
-    border-right: 1px solid #e9ecef;
+/* 主視覺首頁 */
+.hero-banner {
+    margin-top: 70px;
+    background: linear-gradient(135deg, #0f4c5c 0%, #1a7566 100%); /* 熱帶雨林漸層 */
+    color: white;
+    text-align: center;
+    padding: 6rem 2rem;
 }
 
-.sidebar h3 {
-    color: #2980b9;
-    margin-bottom: 1rem;
-    border-bottom: 2px solid #2980b9;
+.hashtag {
     display: inline-block;
-    padding-bottom: 0.3rem;
+    background-color: #f26419; /* 芒果亮橘色 */
+    color: white;
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
 }
 
-.sidebar ul {
-    list-style: none;
-    margin-bottom: 2rem;
-}
-
-.sidebar li {
-    margin-bottom: 0.8rem;
-    position: relative;
-    padding-left: 1.5rem;
-}
-
-.sidebar li::before {
-    content: "▸";
-    position: absolute;
-    left: 0;
-    color: #e67e22;
-}
-
-.sidebar-image img {
-    width: 100%;
-    border-radius: 8px;
-    background-color: #ddd;
-    min-height: 150px;
-    display: block;
-}
-
-/* 主要內容 (Main Content) */
-.main-content {
-    grid-area: main;
-    padding: 2rem 3rem;
-}
-
-.section-block {
-    margin-bottom: 2.5rem;
-}
-
-.section-block h2 {
-    color: #2c3e50;
+.hero-banner h1 {
+    font-size: 2.8rem;
     margin-bottom: 1rem;
-    font-size: 1.8rem;
 }
 
-.section-block p {
-    margin-bottom: 1rem;
-    font-size: 1.05rem;
-    color: #555;
-    text-align: justify;
+.hero-banner .quote {
+    font-style: italic;
+    color: #e0f2f1;
+    margin: 1.5rem 0 2.5rem 0;
 }
 
-.section-block ul {
-    margin: 1rem 0 1rem 2rem;
-    color: #555;
+.action-btn {
+    background-color: #f26419;
+    color: white;
+    padding: 0.8rem 2rem;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.2s;
+    display: inline-block;
 }
 
-.section-block ul li {
+.action-btn:hover {
+    background-color: #d65510;
+    transform: translateY(-2px);
+}
+
+/* 內容區塊共用設定 */
+.main-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.content-block {
+    padding: 4rem 0;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.bg-gray {
+    background-color: #f1f6f5; /* 帶有一點點綠意的水泥灰 */
+    padding: 4rem 2rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+}
+
+.block-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.block-header h2 {
+    font-size: 2rem;
+    color: #0f4c5c;
     margin-bottom: 0.5rem;
 }
 
-/* 頁尾 (Footer) */
-.footer {
-    grid-area: footer;
-    background-color: #2c3e50;
-    color: #bdc3c7;
-    text-align: center;
-    padding: 1.5rem;
-    font-size: 0.9rem;
+.block-header p {
+    color: #6c7a89;
 }
 
-/* RWD 響應式設計 (針對手機與平版) */
+/* 影片區塊 */
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 比例 */
+    height: 0;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(15, 76, 92, 0.15);
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* 卡片排版網格 */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.feature-card, .shot-card, .stp-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-top: 4px solid #0f4c5c;
+}
+
+.stp-card {
+    border-top-color: #f26419;
+}
+
+.shot-card {
+    border-top-color: #1a7566;
+}
+
+.feature-card:hover, .shot-card:hover, .stp-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(15, 76, 92, 0.1);
+}
+
+.badge, .shot-id {
+    display: inline-block;
+    background-color: #e5f0ef;
+    color: #0f4c5c;
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+/* 腳本文字 */
+.story-text {
+    background-color: #fff;
+    padding: 2rem;
+    border-left: 5px solid #f26419;
+    border-radius: 0 8px 8px 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+    margin-bottom: 2rem;
+}
+
+/* 團隊側拍照片樣式 */
+.team-photo {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.team-photo img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(15, 76, 92, 0.15);
+}
+
+/* 團隊介紹網格 */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.member-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #e8e8e8;
+    text-align: center;
+}
+
+.member-card .role {
+    color: #f26419;
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.member-card h4 {
+    color: #0f4c5c;
+    margin-bottom: 0.5rem;
+}
+
+.member-card p {
+    font-size: 0.9rem;
+    color: #555;
+    text-align: left;
+}
+
+/* 頁尾 */
+.site-footer {
+    background-color: #0f4c5c;
+    color: #e0f2f1;
+    text-align: center;
+    padding: 2rem;
+    margin-top: 3rem;
+}
+
+/* RWD 手機版設定 */
 @media screen and (max-width: 768px) {
-    .grid-container {
-        grid-template-columns: 1fr;
-        grid-template-areas: 
-            "header"
-            "main"
-            "sidebar"
-            "footer";
+    .nav-menu {
+        display: none;
     }
-    
-    .header {
-        flex-direction: column;
-        gap: 1rem;
-        text-align: center;
+    .nav-container {
+        justify-content: center;
     }
-
-    .sidebar {
-        border-right: none;
-        border-top: 1px solid #e9ecef;
+    .hero-banner h1 {
+        font-size: 2rem;
     }
-
-    .main-content {
-        padding: 1.5rem;
+    .main-container {
+        padding: 1rem;
     }
 }
